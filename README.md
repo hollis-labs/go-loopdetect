@@ -1,5 +1,21 @@
 # go-loopdetect
 
+## Moved to substrate
+
+This standalone repository is deprecated. New development lives in the
+[`github.com/hollis-labs/substrate/agent`](https://github.com/hollis-labs/substrate/tree/agent/v0.2.0/agent)
+module, released as **`agent/v0.2.0`**.
+
+```sh
+go get github.com/hollis-labs/substrate/agent@v0.2.0
+```
+
+Follow the [package and API migration guide](https://github.com/hollis-labs/substrate/blob/agent/v0.2.0/agent/loopdetect/MIGRATION.md) when updating imports;
+the consolidation can include API changes. Existing standalone tags and history
+are preserved. The documentation below describes the standalone releases and
+is retained for historical reference. Applications migrate separately; this
+redirect does not deploy or update any consumer.
+
 Fingerprint-based detector for repeated tool calls in a per-session sliding window.
 
 It answers one question: in this session, has the same tool been called with the same arguments too many times lately? Each call is hashed (FNV-1a over the tool name and key-order-normalized JSON arguments), the last 10 fingerprints per session are kept, and the third occurrence of one fingerprint in that window returns a `Detection`. The same fingerprint then stays quiet until it ages out of the window.
